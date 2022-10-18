@@ -8,61 +8,9 @@ import { generate } from './stablediffusion.js';
 import fs from 'fs'
 import child_process from 'child_process'
 import Constants from './constants.js'
+import Loader from './loader.js'
 
 const hf = new HuggingFace(process.env.HUGGINGFACE_API_KEY);
-
-const initialQuestion = 'What would you like to see?';
-const preamble = `Below is the output of an AI that reads a description of an image and outputs a question to gather more visual details about the desired image, or outputs "Enough" only if the description is sufficiently detailed and specific. Each pair is a separate instance unrelated to the previous pairs.
-
-Input: I would like to see a school, large
-Output: What kind of material is the school building made of?
-
-Input: I want to see a large red monster with horns, a tail, and claws, fur all over his body, fantasy art style
-Output: Enough.
-
-Input: I want a car, red, driving fast on a road, daytime
-Output: What style of car is it?
-
-Image: Show me James Corden
-Output: Where should he be?
-
-Input: I would like to see a field
-Output: Are there flowers in the field?
-
-Input:`;
-
-class Loader {
-    constructor(bar) {
-        this.i = -1;
-        this.interval = null;
-        this.bar = bar;
-        this.active = true;
-    }
-    update() {
-        if (this.active) {
-            this.i = (++this.i) % 3;
-            this.bar.updateBottomBar(`Thinking.${'.'.repeat(this.i)}${' '.repeat(3 - this.i)}`);
-        }
-    }
-    pause() { this.active = false; }
-    resume() { this.active = true; }
-    show() {
-        if (this.interval === null) {
-            this.interval = setInterval(this.update.bind(this), 500)
-        }
-        this.resume();
-    }
-    hide() {
-        this.pause();
-        clearInterval(this.interval);
-        this.bar.updateBottomBar('');
-        this.interval = null;
-    }
-    remove() {
-        this.hide();
-        this.bar.close();
-    }
-}
 
 let fullDescription = '';
 
@@ -88,7 +36,7 @@ const ask = async label => {
             fullDescription = fullDescription + ', ';
         }
         fullDescription += reworded.replace(/\W+?$/, '');
-        const inputs = `${preamble} ${fullDescription}\nOutput:`;
+        const inputs = `${Constants.Main.PREAMBLE} ${fullDescription}${Constants.Main.PROMPT_WORD}`;
         const data = await hf.textGeneration({
             inputs,
             model: Constants.MODEL,
@@ -129,4 +77,4 @@ const ask = async label => {
     }
 }
 
-ask(initialQuestion);
+ask(Constants.Main.INITIAL_QUESTION);
