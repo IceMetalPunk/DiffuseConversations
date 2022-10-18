@@ -14,7 +14,7 @@ Because AI is cool. Like the tagline says. And also, because I was inspired by t
 *Requirements:*
 1. [NodeJS and NPM.](https://nodejs.org/en/download/)
 2. Windows for text-to-speech ability.
-    * If you aren't on Windows or don't want TTS, you can replace the `tts.js` import with a no-op as the comment at the top of `index.js` says, and remove `wintts` from `package.json` before installing packages.
+    * If you aren't on Windows or don't want TTS, you can replace the `tts.js` import with a no-op as the comment at the top of `index.js` says, and uninstall the `wintts` package after you've installed everything.
 
 *Installing:*
 
