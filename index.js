@@ -3,12 +3,14 @@ dotenv.config();
 import inquirer from 'inquirer'
 import { HuggingFace } from 'huggingface'
 import { reword, summarize } from './reworder.js'
-import { speak } from './tts.js';
 import { generate } from './stablediffusion.js';
 import fs from 'fs'
 import child_process from 'child_process'
 import Constants from './constants.js'
 import Loader from './loader.js'
+
+// If not on Windows, replace the line below with const speak = () => {}
+import { speak } from './tts.js';
 
 const hf = new HuggingFace(process.env.HUGGINGFACE_API_KEY);
 
