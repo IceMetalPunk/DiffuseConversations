@@ -14,7 +14,7 @@ export const startGeneration = async prompt => {
             ],
             'cfg_scale': 7,
             'denoising_strength': 0.75,
-            'seed': '156156165',
+            'seed': (100000 + Math.random() * 8000000).toString(),
             'height': 512,
             'width': 512,
             'seed_variation': 1,

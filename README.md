@@ -22,9 +22,15 @@ Clone this repo into an empty local directory, then install packages:
 
     git clone https://github.com/IceMetalPunk/DiffuseConversations.git .
 
-    # If you don't want TTS or are not on Windows, be sure to remove wintts from package.json before running the next line!
-
     npm install
+
+    # If you don't want TTS or are not on Windows, be sure to run the line below; otherwise, skip it.
+    npm uninstall wintts
+
+Then get yourself a [HuggingFace access token](https://huggingface.co/settings/tokens) and a [Stable Horde API key](https://stablehorde.net/register), and put them in a file called simply `.env` in the root of the repo:
+
+    HUGGINGFACE_API_KEY=<HuggingFace_Access_Token_Goes_Here>
+    STABLE_HORDE_API_KEY=<Stable_Horde_API_Key_Goes_Here>
 
 *Running:*
 
