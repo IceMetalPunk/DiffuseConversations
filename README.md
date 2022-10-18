@@ -7,7 +7,7 @@ Diffuse Conversations is a helpful NodeJS command-line tool that leverages sever
 
 **The Why**
 
-Because AI is cool. Like the tagline says. And also, because I was inspired by this video: [Proof-of-Concept of an AI Assistant Designer](https://twitter.com/imcharleslo/status/1580591523447844865?s=20&t=--wluJFUerrrIvTzeqdAiA) by [@imcharleslo](https://twitter.com/imcharleslo/status/1580591523447844865) on Twitter.
+Because AI is cool. Like the tagline says. And also, because I was inspired by this video: [Proof-of-Concept of an AI Assistant Designer](https://twitter.com/imcharleslo/status/1580591523447844865?s=20&t=--wluJFUerrrIvTzeqdAiA) by [@imcharleslo](https://twitter.com/imcharleslo) on Twitter.
 
 **The Usage**
 
